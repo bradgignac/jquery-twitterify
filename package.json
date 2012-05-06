@@ -1,0 +1,14 @@
+{
+  "name": "jquery-twitterify",
+  "description": "A jQuery plugin for displaying user timelines from Twitter.",
+  "version": "0.1.0",
+  "author": "Brad Gignac <bgignac@bradgignac.com>",
+  "homepage": "http://github.com/bradgignac/jquery-twitterify",
+  "repository": "git://github.com/bradgignac/jquery-twitterify",
+  "keywords": ["jquery", "twitter"],
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "main": "lib/twitterify.js"
+}
