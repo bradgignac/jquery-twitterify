@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jquery.twitterify</title>
+
+  <!-- Jasmine -->
+  <link rel="stylesheet" type="text/css" href="../extern/jasmine-1.1.0/jasmine.css">
+  <script type="text/javascript" src="../extern/jasmine-1.1.0/jasmine.js"></script>
+  <script type="text/javascript" src="../extern/jasmine-1.1.0/jasmine-html.js"></script>
+
+  <!-- Dependencies -->
+  <script type="text/javascript" src="../extern/jquery-1.7.2/jquery-1.7.2.js"></script>
+
+  <!-- Source -->
+  <script type="text/javascript" src="../lib/tweet.js"></script>
+
+  <!-- Spec -->
+  <script type="text/javascript" src="./tweet.spec.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+
+    (function () {
+
+      var environment, htmlReporter;
+
+      environment = jasmine.getEnv();
+      environment.updateInterval = 1000;
+      environment.addReporter(new jasmine.HtmlReporter());
+      environment.execute();
+
+    }());
+
+  </script>
+</body>
+</html>
