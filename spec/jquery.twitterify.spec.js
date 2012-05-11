@@ -1,6 +1,6 @@
 describe('jquery.twitterify', function () {
 
-  var twitterify, elements, loader, renderer;
+  var twitterify, loader, renderer, elements;
 
   beforeEach(function () {
     setFixtures([
