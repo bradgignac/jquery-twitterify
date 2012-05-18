@@ -16,7 +16,7 @@ describe('Twitterify', function () {
   it('builds configuration when initialized', function () {
     options.count = 3;
     options.includeRetweets = false;
-    twitterify.Twitterifier.defaults.excludeReplies = false;
+    twitterify.Twitterifier.Defaults.excludeReplies = false;
 
     twitterifier.init();
 
@@ -53,15 +53,11 @@ describe('Twitterify', function () {
   });
 
   it('hides loading after loading has succeeded', function () {
-
-    var tweets;
-
     spyOn(loader, 'load');
     spyOn(renderer, 'hideLoading');
 
-    tweets = [];
     twitterifier.init().load();
-    fireSuccessCallbackWithTweets(tweets);
+    fireSuccessCallbackWithTweets([]);
 
     expect(renderer.hideLoading).toHaveBeenCalled();
   });
@@ -91,15 +87,11 @@ describe('Twitterify', function () {
   }
 
   it('hides loading after loading has failed', function () {
-
-    var message;
-
     spyOn(loader, 'load');
     spyOn(renderer, 'hideLoading');
 
-    message = 'This is a message!';
     twitterifier.init().load();
-    fireErrorCallbackWithMessage(message);
+    fireErrorCallbackWithMessage('This is a message!');
 
     expect(renderer.hideLoading).toHaveBeenCalled();
   });
