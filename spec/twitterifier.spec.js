@@ -58,6 +58,7 @@ describe('Twitterify', function () {
   });
 
   it('shows loading when load is called', function () {
+    spyOn(loader, 'load');
     spyOn(renderer, 'showLoading');
     twitterifier.init().load();
     expect(renderer.showLoading).toHaveBeenCalled();
