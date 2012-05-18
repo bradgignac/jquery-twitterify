@@ -4,19 +4,11 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: '<json:package.json>',
     meta: {},
-    jshint: {
-      globals: {
-        jQuery: true,
-        describe: true,
-        beforeEach: true,
-        afterEach: true,
-        it: true,
-        expect: true,
-        Tweet: true
-      }
-    },
+    jshint: {},
     lint: {
-      files: ['grunt.js', 'lib/**/*.js', 'spec/**/*.js']
+      grunt: ['grunt.js'],
+      lib: ['lib/**/*.js'],
+      spec: ['spec/**/*.js']
     }
   });
 
