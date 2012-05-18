@@ -30,8 +30,19 @@ describe('Twitterify', function () {
 
   it('sets load options when initialized', function () {
     spyOn(loader, 'setScreenName');
+    spyOn(loader, 'setCount');
+    spyOn(loader, 'setIncludeRetweets');
+    spyOn(loader, 'setExcludeReplies');
+
+    options.count = 5;
+    options.includeRetweets = true;
+    options.excludeReplies = false;
     twitterifier.init();
+
     expect(loader.setScreenName).toHaveBeenCalledWith('someUser');
+    expect(loader.setCount).toHaveBeenCalledWith(5);
+    expect(loader.setIncludeRetweets).toHaveBeenCalledWith(true);
+    expect(loader.setExcludeReplies).toHaveBeenCalledWith(false);
   });
 
   it('initializes renderer when initialized', function () {
