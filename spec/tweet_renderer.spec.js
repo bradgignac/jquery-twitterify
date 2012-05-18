@@ -5,22 +5,25 @@ describe('TweetRenderer', function () {
   beforeEach(function () {
     setFixtures('<div id="tweet-container"></div>');
 
-    container = $('#tweet-container');
-    renderer = new TweetRenderer();
-    renderer.render(container);
+    container = document.getElementById('tweet-container');
+    renderer = new twitterify.TweetRenderer();
+    renderer.init(container);
   });
 
   it('wraps rendered tweets in an OL', function () {
-
-    var listElement;
-
-    listElement = getTweetList().get(0);
-    expect(listElement.tagName).toBe('OL');
+    expect(getTweetList()).toBe('OL');
   });
 
-  function getTweetList() {
-    return container.children().first();
-  }
+  it('adds loading class when showLoading is called', function () {
+    renderer.showLoading();
+    expect(getTweetList()).toHaveClass('loading');
+  });
+
+  it('removes loading class when hideLoading is called', function () {
+    renderer.showLoading();
+    renderer.hideLoading();
+    expect(getTweetList()).not.toHaveClass('loading');
+  });
 
   it('renders one tweet', function () {
 
@@ -34,13 +37,36 @@ describe('TweetRenderer', function () {
     expectTweetDate(tweetElement, 'May 1');
   });
 
+  it('renders multiple tweets', function () {
+
+    var i, tweet, tweets, tweetElement;
+
+    tweets = [];
+    for (i = 0; i < 5; i += 1) {
+      tweet = createTweet(i, new Date(2012, 11, 5));
+      tweets.push(tweet);
+    }
+
+    renderer.addTweets(tweets);
+
+    for (i = 0; i < 5; i += 1) {
+      tweetElement = getTweetAt(i);
+      expectTweetText(tweetElement, i.toString());
+      expectTweetDate(tweetElement, 'December 5');
+    }
+  });
+
+  function getTweetList() {
+    return $(container).children().first();
+  }
+
   function createTweet(text, date) {
 
     var tweet;
 
-    tweet = new Tweet({});
-    spyOn(tweet, 'getRawText').andReturn(text);
-    spyOn(tweet, 'getDate').andReturn(date);
+    tweet = new twitterify.Tweet({});
+    tweet.text = text;
+    tweet.date = date;
     return tweet;
   }
 
@@ -63,23 +89,4 @@ describe('TweetRenderer', function () {
     paragraph = tweet.lastChild;
     expect(paragraph.innerText).toBe(date);
   }
-
-  it('renders multiple tweets', function () {
-
-    var i, tweet, tweets, tweetElement;
-
-    tweets = [];
-    for (i = 0; i < 5; i += 1) {
-      tweet = createTweet(i, new Date(2012, 11, 5));
-      tweets.push(tweet);
-    }
-
-    renderer.addTweets(tweets);
-
-    for (i = 0; i < 5; i += 1) {
-      tweetElement = getTweetAt(i);
-      expectTweetText(tweetElement, i.toString());
-      expectTweetDate(tweetElement, 'December 5');
-    }
-  });
 });
