@@ -81,14 +81,14 @@ describe('Tweet', function () {
   };
 
   beforeEach(function () {
-    tweet = new Tweet(data);
+    tweet = new twitterify.Tweet(data);
   });
 
   it('parses raw tweet text', function () {
-    expect(tweet.getRawText()).toBe('Misleading error message - If you try to follow a user who was recently suspended, you may see an error... http://t.co/cCIWIwg');
+    expect(tweet.text).toBe('Misleading error message - If you try to follow a user who was recently suspended, you may see an error... http://t.co/cCIWIwg');
   });
 
   it('converts the created date to a JavaScript date', function () {
-    expect(tweet.getDate().toUTCString()).toBe('Mon, 27 Jun 2011 19:32:19 GMT');
+    expect(tweet.date.toUTCString()).toBe('Mon, 27 Jun 2011 19:32:19 GMT');
   });
 });
