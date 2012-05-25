@@ -3,12 +3,15 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: '<json:package.json>',
+    meta: {},
+    jshint: {},
     lint: {
       grunt: ['grunt.js'],
       lib: ['lib/**/*.js'],
       spec: ['spec/**/*.js']
     }
   });
+
 };
 
 /*global module:false*/
