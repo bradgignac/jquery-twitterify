@@ -10,13 +10,19 @@ module.exports = function (grunt) {
     },
     concat: {
       dist: {
-        src: ['lib/**/*.js'],
+        src: ['<config:lint.lib>'],
         dest: 'dist/<%= pkg.name %>-<%= pkg.version %>.js'
+      }
+    },
+    min: {
+      dist: {
+        src: ['<config:concat.dist.dest>'],
+        dest: 'dist/<%= pkg.name %>-<%= pkg.version %>.min.js'
       }
     }
   });
 
-  grunt.registerTask('default', 'lint concat');
+  grunt.registerTask('default', 'lint concat min');
 };
 
 /*global module:false*/
