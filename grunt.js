@@ -15,6 +15,8 @@ module.exports = function (grunt) {
       }
     }
   });
+
+  grunt.registerTask('default', 'lint concat');
 };
 
 /*global module:false*/
