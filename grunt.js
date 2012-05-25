@@ -27,7 +27,6 @@ module.exports = function (grunt) {
     },
     watch: {
       files: ['<config:lint.grunt>', '<config:lint.lib>', '<config:lint.spec>'],
-      tasks: 'lint'
       tasks: 'test'
     }
   });
