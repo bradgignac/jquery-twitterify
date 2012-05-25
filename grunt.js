@@ -7,6 +7,12 @@ module.exports = function (grunt) {
       grunt: ['grunt.js'],
       lib: ['lib/**/*.js'],
       spec: ['spec/**/*.js']
+    },
+    concat: {
+      dist: {
+        src: ['lib/**/*.js'],
+        dest: 'dist/<%= pkg.name %>-<%= pkg.version %>.js'
+      }
     }
   });
 };
