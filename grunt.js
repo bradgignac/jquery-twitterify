@@ -32,4 +32,5 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', 'lint concat min');
+  grunt.registerTask('test', 'lint');
 };
